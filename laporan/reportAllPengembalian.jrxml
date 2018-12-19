@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportAllPengembalian" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b1f6c8aa-c635-4af6-beca-9971d9969909">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="31"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="PieChartDataset" uuid="e3ac1929-de66-4340-afa8-f08ba8fd3fc4"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM tb_pengembalian pn, tb_peminjaman pm, tb_user u WHERE pn.id_user=u.id_user AND pn.id_peminjaman=pm.id_peminjaman]]>
+	</queryString>
+	<field name="id_pengembalian" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_peminjaman" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_user" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="plat_nomor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_peminjam" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="divisi" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telepon" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="keterangan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tujuan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tanggal_peminjaman" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tanggal_pengembalian" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band height="555" splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="119" splitType="Stretch">
+			<staticText>
+				<reportElement style="SubTitle" x="0" y="65" width="156" height="29" uuid="a0744cf3-4632-4b57-a17f-12dd13405380"/>
+				<textElement textAlignment="Right">
+					<font size="22" isBold="false"/>
+				</textElement>
+				<text><![CDATA[PT AUAH DEV]]></text>
+			</staticText>
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="0" width="822" height="65" forecolor="#FF9933" backcolor="#FF9933" uuid="45226f85-0098-46b5-b179-70b29b8756ab"/>
+				<staticText>
+					<reportElement style="Title" x="20" y="0" width="474" height="65" uuid="b2f6ec04-db0c-4d8e-b77b-2f7c68223db0"/>
+					<textElement textAlignment="Right">
+						<font size="54" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Report Pengembalian]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="14" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="802" height="14" uuid="2ada0e10-7982-407f-a56a-631a1b97807a"/>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="0" y="0" width="52" height="14" forecolor="#000000" uuid="ee8ca837-3a9d-43c1-a20a-e8cd2b899572"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[ID]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="52" y="0" width="58" height="14" forecolor="#000000" uuid="aa2f120b-70ca-4d63-b982-728bdde63d15"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[ID Peng.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="109" y="0" width="71" height="14" forecolor="#000000" uuid="87d99e72-8830-4e21-b5bd-2b7f66b89b1f"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Operator]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="180" y="0" width="59" height="14" forecolor="#000000" uuid="6d3a2213-3b08-4cf5-b8bb-5092a63159e4"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[PLAT]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="238" y="0" width="84" height="14" forecolor="#000000" uuid="45bf0c35-78d2-4080-8ad9-0f5cd2b44fe2"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Peminjam]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="322" y="0" width="52" height="14" forecolor="#000000" uuid="b4b9ca6e-b0d7-4d5a-a512-4b59dada135c"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[divisi]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="374" y="0" width="84" height="14" forecolor="#000000" uuid="ad6aab69-635f-4dcc-9087-c962562ec680"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[telepon]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="458" y="0" width="71" height="14" forecolor="#000000" uuid="c6f8d6d8-cba2-4926-96a8-53b93fcbfd8f"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[keterangan]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="529" y="0" width="68" height="14" forecolor="#000000" uuid="6e9f4f23-6c1d-4120-bce6-c1ea9f4e8179"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Tujuan]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="597" y="0" width="106" height="14" forecolor="#000000" uuid="70fd7056-56d9-45e9-b283-9fb46c0340f6"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Peminjaman]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="703" y="0" width="99" height="14" forecolor="#000000" uuid="45bc97cd-2595-4efa-b888-77f01ab592be"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Pengembalian]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="14" width="802" height="1" uuid="4527088e-5e16-45be-a700-2e3febc6b462"/>
+			</line>
+			<frame>
+				<reportElement x="0" y="0" width="802" height="14" uuid="c15d72e5-5748-4aad-a6a2-37bbf07f25eb"/>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="52" height="14" uuid="12784eeb-b99b-41e8-a1ac-67c83311bad7"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{id_pengembalian}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="52" y="0" width="58" height="14" uuid="05e464f9-ae31-4705-8d06-6ae66d0a6782"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{id_peminjaman}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="109" y="0" width="71" height="14" uuid="e447dcb5-1eb7-4ed7-bcfe-1fadd1247ab7"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nama_user}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="180" y="0" width="59" height="14" uuid="0e96dfab-f100-4d53-b151-a5079833c6f9"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{plat_nomor}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="238" y="0" width="84" height="14" uuid="d92f8396-1f0f-4ad9-87f0-42bf7b8e4ba2"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nama_peminjam}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="322" y="0" width="52" height="14" uuid="09c4da32-bd85-4691-837f-5eae57586121"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{divisi}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="374" y="0" width="84" height="14" uuid="932709dc-c7fd-4e9c-9ef1-b276239cc3be"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{telepon}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="458" y="0" width="71" height="14" uuid="c07b31f3-a39b-4566-a0e0-87a78bf5cdba"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{keterangan}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="529" y="0" width="68" height="14" uuid="61e0deaa-8d95-4c2f-9bbb-e23dba3e210c"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tujuan}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="597" y="0" width="106" height="14" uuid="996193d6-b44b-40b5-8e09-b059481f77dd"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tanggal_peminjaman}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="703" y="0" width="99" height="14" uuid="93d73aec-5c65-49db-aaab-85900fe453bb"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tanggal_pengembalian}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="1ecc60b1-20d6-41d2-b14a-4b28f51e6a13"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="16" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="2" y="0" width="800" height="16" forecolor="#D0B48E" backcolor="#FF9933" uuid="2e1ae91d-b3ee-44a7-9d9f-edc6a3cd31b5"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="753" y="0" width="40" height="16" forecolor="#FFFFFF" uuid="01850ca2-3ac7-4103-a1e1-7ca590ecea0e"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="673" y="0" width="80" height="16" forecolor="#FFFFFF" uuid="d5fb2189-e490-495f-b100-736553659445"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="0" width="197" height="16" forecolor="#FFFFFF" uuid="2c6c3e3f-d0a9-4336-a657-2b882e14d3a0"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
